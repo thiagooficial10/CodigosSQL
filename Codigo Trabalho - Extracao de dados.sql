@@ -1,5 +1,3 @@
-USE us_dw;
-
 DECLARE @data_ini DATETIME = '2024-01-01 00:00:00.000';
 DECLARE @data_fim DATETIME = '2024-02-01 00:00:00.000';
 
@@ -31,16 +29,17 @@ FROM (
 
 -- SELECT PARA BUSCAR OS DADOS E TRATA-LOS
 
+
 SELECT
-	s.cod_processo																	            AS [Codigo Processo],
-    ROW_NUMBER() OVER (PARTITION BY s.cod_processo ORDER BY s.dat_solicitacao DESC) AS RowNum,
-    s.cod_solicitacao																          AS [Codigo Solicitação],
-    pe.dsc_pessoa																	            AS [Nome],
-    pe.num_documento																          AS [CPF/CNPJ],
+	s.cod_processo																	AS [Codigo Processo],
+    ROW_NUMBER() OVER (PARTITION BY s.cod_processo ORDER BY s.dat_solicitacao) AS RowNum,
+    s.cod_solicitacao																AS [Codigo Solicitação],
+    pe.dsc_pessoa																	AS [Nome],
+    pe.num_documento																AS [CPF/CNPJ],
     FORMAT (s.vlr_bruto, 'c', 'pt-BR')												AS [Valor Bruto],
-    u.nom_usuario																	            AS Hunter,
-    u.cod_usuario																	            AS [Codigo Do Hunter],
-    CONVERT (DATE, s.dat_solicitacao)												  AS [Data da Solicitação],
+    u.nom_usuario																	AS Hunter,
+    u.cod_usuario																	AS [Codigo Do Hunter],
+    CONVERT (DATE, s.dat_solicitacao)												AS [Data da Solicitação],
 	CONVERT (DATE, s.dat_1_envio_brl_cliente)										AS [Data 1 Envio BRL cliente],
 	CONVERT (DATE, s.dat_envio_brl_cliente)											AS [Data Envio BRL cliente],
 	CONVERT (DATE, s.dat_retorno_brl_cliente)										AS [Data Retorno BRL cliente],
@@ -66,4 +65,4 @@ WHERE
 WHERE
     RowNum = 1
 ORDER BY
-   [Data da Solicitação];
+   [Codigo Processo];

@@ -19,3 +19,9 @@ FROM (
     FROM `bigquery-public-data.baseball.schedules`
     WHERE LENGTH(awayTeamName) = 6
 ) AS times_combinados;
+
+
+--DESCOBRI A FORMA DE COMO USAR O LIKE
+SELECT distinct homeTeamName
+FROM `bigquery-public-data.baseball.schedules`
+where homeTeamName like '______'

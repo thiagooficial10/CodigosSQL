@@ -1,8 +1,14 @@
-/*UTILIZEI O COALESCE PARA TRATAR VALORES NULOS, DE PRIMEIRA NAO FUNCIONOU POIS OS CAMPOS SAO STRING E O COALESCE NAO FAZ ESSA TRATATIVA, APENAS VALORES NULOS.
+/*
+ Ache a tabela “users” no dataset “thelook_ecommerce”, no projeto de dados 
+públicos do BigQuery. Traga como resultado um único campo distinto com as 
+informações de forma organizada dos campos street_address + city + state + 
+country + postal_code.
+
+UTILIZEI O COALESCE PARA TRATAR VALORES NULOS, DE PRIMEIRA NAO FUNCIONOU POIS OS CAMPOS SAO STRING E O COALESCE NAO FAZ ESSA TRATATIVA, APENAS VALORES NULOS.
 ENTAO UTILIZEI O NULLIF PARA CONVERTER STRING NULL EM NULL MESMO.
-O CONCAT USEI PARA CONCATENAR OS CAMPOS*/
+O CONCAT USEI PARA CONCATENAR OS CAMPOS
 
-
+*/
 
 select 
     distinct id,

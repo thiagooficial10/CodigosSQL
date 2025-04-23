@@ -1,6 +1,12 @@
---#CODIGO PARA PASSAR DE 1 CASA DECIMAL, PARA MAIS CASAS DECIMAIS (MEDIA DAS NOTAS), UTILIZANDO O "CAST"
---#REALIZANDO O JOIN PARA JUNÇÃO DE TABELAS
---#WHERE PARA BUSCAR PELO NOME, MES E ANO
+/*📌 Resumo Geral
+Este código SQL:
+
+Une três tabelas relacionadas por ID do incidente.
+
+Filtra os registros com base no responsável, mês e ano de conclusão.
+
+Converte as notas para decimal e calcula a média com duas casas decimais.*/
+
 
 	SELECT
     CAST(AVG(CAST(ri.emx_respostas_id AS DECIMAL(10, 2))) AS DECIMAL(10, 2)) AS media_notas
